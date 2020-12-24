@@ -1,4 +1,4 @@
-# Template for hosting python scripts and applications on Heroku
+# This is a ready to use template bot to watch TCF calendar changes
 
 This is a small example of running your script with
 [Heroku](https://www.heroku.com/). You can run almost any python application
