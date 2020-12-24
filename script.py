@@ -39,9 +39,9 @@ def sendEmail():
 	# Creation d'un contexte SSL sécurisé
 	context = ssl.create_default_context()
 
-	login = "addavigner@gmail.com" #addresse gmail d'envoi, doit avoir l'option "autoriser les applications non-sécurisées" activée
-	password = "Password1996" #mot de passe de la boite gmail d'envoi
-	receiver = "ada.meceffeuk@gmail.com" #addresse email de reception, preferablement reliée à votre téléphone pour être notifié
+	login = "login@email.here" #addresse gmail d'envoi, doit avoir l'option "autoriser les applications non-sécurisées" activée
+	password = "password" #mot de passe de la boite gmail d'envoi
+	receiver = "receiver@email.here" #addresse email de reception, preferablement reliée à votre téléphone pour être notifié
 
 	message = "Subject: TCF-Bot Update\nUn changement à été déctecté".encode('utf-8') #objet et corps de l'email de notification.
 
