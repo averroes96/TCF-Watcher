@@ -1,29 +1,7 @@
 import smtplib, ssl, requests, time
 from datetime import datetime
 
-"""
-/****************| TCF-Bot |****************\
-Prérequis:
-- Une boite GMAIL (preferablement une boite inutile/jetable)
-- Une boite email personnelle qui vous notifiera à la reception d'un email
-- Python 3.8
-- Beaucoup de patience
-Configuration:
-- Affecter l'addresse email de la boite GMAIL et son mot de passe aux variables "login" et "password" de la fnct sendEmail.
-- Affecter l'addresse email de la boite personnelle à la variable "receiver" de la fnct sendEmail.
-- Autoriser les applications non-sécurisées au niveau des paramètres de votre boite GMAIL.
-  NOTE: google désactive automatiquement ce paramètre aprés un certain temps, il faudra donc vérifier manuellement 
-        qu'il reste activé durant la durée d'utilisation du bot.
-- Se connecter avec votre compte IF-Algérie et cocher la case "se souvenir de moi".
-- Affecter le nom du cookie "remember_web_trucmachinchose" à la variable cookie dans sa position adéquate.
-- Décoder la valeur du cookie pour remplacer les caractères de la forme "%3D" par leurs valeurs en utilisant ce site: https://meyerweb.com/eric/tools/dencoder/
-- Affecter le résultat à la variable cookie.
-+ IMPORTANT: Il faut impérativement fermer la page IF-Algérie sans se déconnecter.
-Pour vérifier que la configuration des boites email a été effectuée correctement, commentez le code et faites appel à la fonction sendEmail sans condition.
-"""
-
-"""*************************************************"""
-def difference(a, b): #fonction permettant de calculer un indice de différence entre 2 chaines
+def difference(a, b): #function allowing to calculate an index of difference between 2 strings
     if(a == b):
         return 0
 	
@@ -36,18 +14,18 @@ def difference(a, b): #fonction permettant de calculer un indice de différence 
 """*************************************************"""
 def sendEmail():
 	port = 465
-	# Creation d'un contexte SSL sécurisé
+	# Creating a secure SSL context
 	context = ssl.create_default_context()
 
-	login = "login@email.here" #addresse gmail d'envoi, doit avoir l'option "autoriser les applications non-sécurisées" activée
-	password = "password" #mot de passe de la boite gmail d'envoi
-	receiver = "receiver@email.here" #addresse email de reception, preferablement reliée à votre téléphone pour être notifié
-
-	message = "Subject: TCF-Bot Update\nUn changement à été déctecté".encode('utf-8') #objet et corps de l'email de notification.
+	login = "login@email.here" #sending gmail address, must have the option "allow non-secure applications" enabled
+	password = "password" #password of the sending gmail box
+	receiver = "receiver@email.here" #reception email address, preferably linked to your phone to be notified
+	
+	message = "Subject: TCF-Bot Update\nUn changement à été déctecté".encode('utf-8') #subject and body of the notification email.
 
 	with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
-			server.login(login, password) #connection à la boite gmail d'envoi
-			server.sendmail("TCF-Bot", receiver, message) # envoi de l'email
+			server.login(login, password) #connection to the gmail sending box
+			server.sendmail("TCF-Bot", receiver, message) # sending email
 """*************************************************"""
 s = requests.Session()
 url = 'https://portail.if-algerie.com/'
@@ -64,7 +42,7 @@ else:
 nbReqs = 0
 nbVersions = 1
 nbIgnored = 0
-delay = 60*5 #vérifie une fois par 5min
+delay = 60*5 #check once every 5min
 print("Vérifié", nbReqs, "fois,", nbVersions, "version(s) recontrée(s) et", nbIgnored, "version(s) ignorée(s)")
 while(True):
     time.sleep(delay)
@@ -72,7 +50,7 @@ while(True):
         y = s.get(url, headers=header, cookies=cookie)
         nbReqs += 1
         diff = difference(x.content, y.content)
-        if(diff >= 0.1): #0.1 pour ignorer les changements mineurs
+        if(diff >= 0.1): #0.1 to ignore minor changes
             sendEmail()
             now = datetime.now()
             print(now, ": Nouvelle version détectée avec différence de", diff)
