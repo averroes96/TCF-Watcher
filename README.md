@@ -1,5 +1,11 @@
 # Ready to use template bot to watch TCF calendar changes
 
+# Prerequisites:
+- A Gmail account (preferably a useless / disposable box)
+- A personal email box which will notify you when an email is received
+- Python 3.8
+- A lot of patience
+
 This is a small example of running your script with
 [Heroku](https://www.heroku.com/). You can run almost any python application
 with any dependencies.
