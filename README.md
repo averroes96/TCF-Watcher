@@ -1,27 +1,4 @@
 # Ready to use template bot to watch TCF calendar changes
-
-## Prerequisites:
-- A Gmail account (preferably a useless / disposable box)
-- A personal email box which will notify you when an email is received
-- Python 3.8
-- A lot of patience
-
-## Configuration:
-- Assign the Gmail address and its password to the `login` and` password` variables of the `sendEmail` function found in `script.py`.
-- Assign the email address of the personal mailbox to the `receiver` variable of the` sendEmail` function.
-- Authorize non-secure applications in the parameters of your Gmail.
-  NOTE: google automatically deactivates this setting after a certain time, so you will have to manually check that it remains activated during the bot's use time.
- Connect with your IF account and check the "remember me" box.
-- Assign the name of the cookie `remember_web_trucmachinchose` to the cookie variable in its appropriate position.
-- Decode the value of the cookie to replace the characters of the form `% 3D` by their values ​​using this site:`https://meyerweb.com/eric/tools/dencoder/ `
-- Assign the result to the cookie variable.
-
-+ IMPORTANT: You must close the IF page without disconnecting. To check that the configuration of the mailboxes has been carried out correctly, comment out the code and call the `sendEmail` function unconditionally.
-
-This is a small example of running your script with
-[Heroku](https://www.heroku.com/). You can run almost any python application
-with any dependencies.
-
 ## Getting Started
 
 1. Download or clone this repository
@@ -102,6 +79,26 @@ with any dependencies.
 
 * [Heroku CLI](https://devcenter.heroku.com/articles/getting-started-with-python#set-up)
 * [git](https://git-scm.com/downloads)
+* A Gmail account (preferably a useless / disposable box)
+* A personal email box which will notify you when an email is received
+* Python 3.8
+* A lot of patience
+
+## Configuration:
+- Assign the Gmail address and its password to the `login` and` password` variables of the `sendEmail` function found in `script.py`.
+- Assign the email address of the personal mailbox to the `receiver` variable of the` sendEmail` function.
+- Authorize non-secure applications in the parameters of your Gmail.
+  NOTE: google automatically deactivates this setting after a certain time, so you will have to manually check that it remains activated during the bot's use time.
+ Connect with your IF account and check the "remember me" box.
+- Assign the name of the cookie `remember_web_trucmachinchose` to the cookie variable in its appropriate position.
+- Decode the value of the cookie to replace the characters of the form `% 3D` by their values ​​using this site:`https://meyerweb.com/eric/tools/dencoder/ `
+- Assign the result to the cookie variable.
+
++ IMPORTANT: You must close the IF page without disconnecting. To check that the configuration of the mailboxes has been carried out correctly, comment out the code and call the `sendEmail` function unconditionally.
+
+This is a small example of running your script with
+[Heroku](https://www.heroku.com/). You can run almost any python application
+with any dependencies.
 
 ## Authors
 
